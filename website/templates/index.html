@@ -1,4 +1,31 @@
 {% extends 'shared/layout.html' %}
 {% block conteudo%}
-    <p>Oi</p>
+<div>
+    <h1>Bem vindo!</h1>
+    <h2>Aqui você poderá dar suas ideias sem medo de ser julgado!</h2>
+</div>
+
+<form action="/" method="POST">
+    {% csrf_token %}
+    <label>Nome</label>
+    <input type="text" name="nome" required>
+
+    <label>Sobrenome</label>
+    <input type="text" name="sobrenome" required>
+
+    <label>Email</label>
+    <input type="email" name="email" required>
+
+    <label for="">Gênero</label>
+    <select name="genero" required>
+        <option value="F">Feminino</option>
+        <option value="M">Masculino</option>
+        <option value="O">Outro</option>
+    </select>
+
+    <label>Biografia</label>
+    <textarea name="biografia" cols="30" rows="10"></textarea>
+
+    <input type="submit" value="Cadastrar">
+</form>
 {% endblock %}
