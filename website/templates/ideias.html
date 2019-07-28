@@ -2,6 +2,7 @@
 {% block conteudo%}
 <h1>Cadastre sua ideia {{pessoa.nome}}</h1>
 
+<div class="ideias">
 <form action="/ideias" method="POST">
 {% csrf_token %}
     <input type="hidden" name="email" value="{{pessoa.email}}">
@@ -21,5 +22,6 @@
 
     <input type="submit" value="Cadastrar ideia">
 </form>
+</div>
 
 {% endblock %}

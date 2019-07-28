@@ -2,8 +2,9 @@
 
 {% block conteudo %}
 
-
+<div class="lista">
 <h1>Listagem das Ideias</h1>
+<div class="ideia">
 <p>
         {% for ideia in ideias %}
                 <p>{{ideia.pessoa.nome}}</p>
@@ -13,5 +14,7 @@
                 <hr>
         {% endfor %}
 </p>
+</div>
+</div>
 
 {% endblock %}
