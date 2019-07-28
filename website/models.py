@@ -35,6 +35,12 @@ class Pessoa(models.Model):
         blank=True
     )
 
+    senha = models.CharField(
+        max_length=255,
+        verbose_name='Senha',
+        default='SOME STRING'
+    )
+
     data_de_criacao = models.DateTimeField(auto_now_add=True)
     ativo = models.BooleanField(default=True)
 
