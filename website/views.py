@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from website.models import Pessoa
+from django.shortcuts import render, redirect
+from website.models import Pessoa, Ideia
 
 # Create your views here.
 def index(request):
@@ -25,8 +25,6 @@ def login(request):
         senha_form = request.POST.get('senha')
         pessoa = Pessoa.objects.filter(email=email_form, senha=senha_form).first()
 
-        print('Iae meu bom amigo ', pessoa)
-
         if pessoa is None:
             contexto = {'msg': 'Cadastre-se para criar uma ideia'}
             return render(request, 'index.html', contexto)
@@ -37,4 +35,24 @@ def login(request):
     return render(request, 'login.html', {})
 
 def ideias(request):
+    if request.method == 'POST':
+        email_pesssoa = request.POST.get('email')
+        pessoa = Pessoa.objects.filter(email=email_pesssoa).first()
+        if pessoa is not None:
+            ideia = Ideia()
+            ideia.pessoa = pessoa
+            ideia.titulo = request.POST.get('titulo')
+            ideia.descricao = request.POST.get('descricao')
+            ideia.categoria = request.POST.get('categoria')
+            ideia.categoria_outros = request.POST.get('categoria_outros')
+            ideia.save()
+            return redirect('/lista') 
+
     return(request,'ideias.html')
+
+def lista(request):    
+    ideias = Ideia.objects.all()
+    contexto = {
+        'ideias': ideias
+    }
+    return render(request, 'lista.html', contexto)
