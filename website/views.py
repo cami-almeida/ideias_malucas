@@ -43,7 +43,7 @@ def ideias(request):
             ideia.pessoa = pessoa
             ideia.titulo = request.POST.get('titulo')
             ideia.descricao = request.POST.get('descricao')
-            ideia.categoria = request.POST.get('categoria')
+            ideia.categorias = request.POST.get('categorias')
             ideia.categoria_outros = request.POST.get('categoria_outros')
             ideia.save()
             return redirect('/lista') 

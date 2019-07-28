@@ -7,10 +7,10 @@
 <div class="ideia">
 <p>
         {% for ideia in ideias %}
-                <p>{{ideia.pessoa.nome}}</p>
-                <p>{{ideia.titulo}}</p>
-                <p>{{ideia.categoria}}</p>
-                <p>{{ideia.descricao}}</p>
+                <p>CRIADOR: {{ideia.pessoa.nome}}</p>
+                <p>TÍTULO: {{ideia.titulo}}</p>
+                <p>CATEGORIA: {{ideia.categorias}}</p>
+                <p>DESCRIÇÃO: {{ideia.descricao}}</p>
                 <hr>
         {% endfor %}
 </p>
