@@ -51,8 +51,17 @@ def ideias(request):
     return(request,'ideias.html')
 
 def lista(request):    
-    ideias = Ideia.objects.all()
+    ideias = Ideia.objects.filter(ativo=True)
     contexto = {
         'ideias': ideias
     }
     return render(request, 'lista.html', contexto)
+
+def remover_ideia(request, id):
+    ideia = Ideia.objects.filter(id=id).first()
+    if ideia is not None:
+        ideia.ativo = False
+        ideia.save()
+        return redirect('/lista')
+
+    return render(request, 'lista.html')
